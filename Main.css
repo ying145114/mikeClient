@@ -1,0 +1,56 @@
+/* 登录/注册/改密样式 */
+* {
+	box-sizing: border-box;
+}
+/* 链接样式 */
+a{
+  text-decoration: none;/*去下划线*/
+  font-size: 12px;/*字体大小*/
+  text-align-all: center;
+}
+/* 表单样式 */
+input[type=text], [type=password], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+/* 标签 */
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+/* 按钮样式 */
+input[type=submit] {
+	background-color: #66ccff;/* or 4CAF50 */
+	color: white;
+	padding: 12px 40px;
+	border: none;
+	border-radius: 4px;
+	box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+/* 主容器 */
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	text-align: center;
+}
+/* 副容器 */
+.col-75 {
+	width: 100%;
+	margin-top: 6px;
+	text-align-all: center;
+}
+
+/* 清除浮动 */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
