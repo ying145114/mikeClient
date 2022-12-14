@@ -1,0 +1,256 @@
+/*_________________________________________________________________________________聊天气泡CSS____________________________________________*/
+/*排版统一*/
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-weight: normal;
+}
+/*系统字体*/
+	.font-T{
+		font-size: 6px;
+		font-variant: small-caps;
+	}
+/*居中*/
+	.textcenter{
+		text-align: center;
+	}
+/* 全局底板 */
+	.maindiv-A{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+
+		background: linear-gradient(rgba(196,196,196,0) 0%,rgba(111,254,222,255) 100%);
+		box-shadow: inset -1px -1px 10px rgba(0, 0, 0, 0.25);
+	}
+/* 标题栏-外容器 */
+	.title-div-out{	
+		position: absolute;
+		width: 100%;
+		height: 73px;
+		top: 0;
+		left: 0;
+		box-sizing: border-box;
+		text-align: center; 
+
+		background: linear-gradient(rgba(111,248,254,255) 0%,rgba(243,233,233,0) 100%);
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+		border-radius: 0px 0px 30px 30px;
+	}
+/* 标题栏-内容器 */
+	.title-div-in{
+		position: absolute;
+		width: 80%;
+		height: 60%;
+		top: 40%;
+		left: 10%;
+		text-align: center;
+		display: inline-block;
+		color: rgba(3,141,94,0.49);
+		font-family: Noto Sans SC;
+	}
+/*底框（透明）*/
+	.message-div{
+		width: 90%;
+		height: 70%;
+		max-width: 1314px;
+		background: rgba(0,0,0,0.1);
+		border-radius:5px 10px;
+		box-shadow: -2px -2px 2px rgba(255,255,255,0.8),-2px -2px 12px rgba(255,255,255,0.5),inset 2px 2px 4px rgba(255,255,255,0.1),2px 2px 8px rgba(0,0,0,0.15);
+		position: fixed;
+		left: 0;
+		top: 14%;
+		right: 0;
+		margin: 0 auto;
+		padding: 15px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		overflow:auto;
+		overflow-y:scroll;
+	}
+/* 输入框定位 */
+	.input-div-out{
+		position: absolute;
+		width: 100%;
+		height: 96px;
+		bottom: 0;
+		left: 0;
+
+		background: linear-gradient(rgba(111,254,222,13) 0%,rgba(17,161,3,26) 100%);
+		opacity: 0.5;
+		border-radius: 30px 30px 0px 0px;
+		box-shadow: 0px -4px 8px rgb(0, 180, 139);
+	}
+/* 二次定位 */
+	.input-div-in{
+		position: absolute;
+		width: 80%;
+		height: 50%;
+		top: 25%;
+		left: 10%;
+	}
+/* 输入栏*/
+	.input-div-main{
+		position: absolute;
+		padding-left: 5px;
+		width: 70%;
+		height: 80%;
+		top: 0;
+		left: 0;
+		border-radius : 10px;
+
+		background: rgb(196, 196, 196,0.31);
+		border: 2px solid rgba(78, 78, 78, 0.30);
+	}
+/* 发送按钮 */
+	.spend-div{
+		position: absolute;
+		width: 20%;
+		height: 80%;
+		top: 0;
+		right: 0;
+		border-radius : 10px;
+		text-align: center;
+		line-height: 2.5;
+		vertical-align: middle;
+
+		background-color: rgba(81, 204, 151, 0.31);
+		border: 2px solid rgba(78, 78, 78, 0.30);
+		color:#31462D
+	}
+/* 发送按钮(输入框有内容时) */
+	.spend-div-0{
+		position: absolute;
+		width: 20%;
+		height: 80%;
+		top: 0;
+		right: 0;
+		border-radius : 10px;
+		text-align: center;
+		line-height: 2.5;
+		vertical-align: middle;
+
+		background-color: rgba(1,85,16,0.31);
+		border: 2px solid rgba(78, 78, 78, 0.30);
+		color: #000000;
+	}
+/* 左（他人）聊天气泡 */
+	.lidiv-L{
+		text-align: left;
+		margin: 0 0 0 5px;
+	}
+	.li-L{
+		margin-left: -15px;
+		align-items: flex-end;
+		justify-content: flex-start;
+	}
+	.frame-L{
+		width: 100%;
+		float: left;
+		position: relative;
+		padding: 0 0 0 5px;
+		margin: 2px 0 2px 0;
+	}
+	/* 气泡三角形 */
+	.triangle-L{
+		width:0;
+		height:0;
+		border-top:5px solid transparent;
+		border-bottom:5px solid transparent;
+		border-right:5px solid #98E165;
+		position: absolute;
+		left: 0;
+		top: 6px;
+	}
+	.rotationtiao-L{
+		float: left;
+		padding: 5px 10px;
+		background-color: #98E165;
+		font-size: 14px;
+		border-radius: 7px;
+	}
+
+/* 右（自己）聊天气泡 */
+	.lidiv-R{
+		text-align: right;
+		margin: 0 5px 0 0;
+	}
+	.li-R{
+		margin-right: -15px;
+		align-items: flex-end;
+		justify-content: flex-end;
+	}
+	.frame-R{
+		width: 100%;
+		float: right;
+		position: relative;
+		padding: 0 5px 0 0;
+		margin: 2px 0 2px 0;
+		text-align: left;
+		
+	}
+	/* 气泡三角形 */
+	.triangle-R{
+		width:0;
+		height:0;
+		border-top:5px solid transparent;
+		border-bottom:5px solid transparent;
+		border-left:5px solid #98E165;
+		position: absolute;
+		right: 0;
+		top: 6px;
+	}
+	.rotationtiao-R{
+		float: right;
+		padding: 5px 10px;
+		background-color: #98E165;
+		font-size: 14px;
+		border-radius: 7px;
+	}
+/* 图片样式 */
+	.mainimg{
+		max-width: 100%;
+		max-height: 100%;
+	}
+/* 聊天列表 */
+	.chat {
+		width: 100%;
+		list-style: none;
+		background: none;
+		margin: 0;
+		padding: 0 0 50px 0;
+		margin-bottom: 10px;
+	}
+	.chat li {
+		padding: 0.5rem;
+		overflow: hidden;
+		display: flex;
+	}
+/* 头像底部样式 */
+	.chat .avatar {
+		width: 40px;
+		height: 40px;
+		position: relative;
+		display: block;
+		z-index: 2;
+		border-radius: 100%;
+		-ms-border-radius: 100%;
+		background-color: rgba(255,255,255,0.9);
+	}
+/* 头像展示样式 */
+	.chat .avatar img {
+		width: 40px;
+		height: 40px;
+		border-radius: 100%;
+		-ms-border-radius: 100%;
+		background-color: rgba(255,255,255,0.9);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
