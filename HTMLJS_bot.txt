@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <title>网页机器人</title>
+    <script>
+var wsws = "wss://xq.kzw.ink/ws" //ws地址
+var chan = "xq102210" //频道
+var nick = "cmd_网页机器人" //名称
+var pass = "" //密码
+var murm = "cmd" //指纹
+var clke = "HTMLJS_bot" //客户端秘钥
+var admi = "" //机器人管理员识别码
+var tokn = "" //机器人token
+function gl () {
+document.open()
+document.write( "<a href=\"javascript:fh()\">返回</a>")
+document.write( "<br>")
+document.write( "<a href=\"javascript:wsws=prompt(`设置ws地址`,`" + wsws +"`); fh()\">修改ws地址</a> ")
+document.write( "<a href=\"javascript:chan=prompt(`设置频道`,`" + chan +"`); fh()\">修改频道</a> ")
+document.write( "<a href=\"javascript:nick=prompt(`设置名称`,`" + nick +"`); fh()\">修改名称</a> ")
+document.write( "<a href=\"javascript:pass=prompt(`设置密码`,`" + pass +"`); fh()\">修改密码</a> ")
+document.write( "<a href=\"javascript:murm=prompt(`设置指纹`,`" + murm +"`); fh()\">修改指纹</a> ")
+document.write( "<a href=\"javascript:clke=prompt(`设置客户端秘钥`,`" + clke +"`); fh()\">修改客户端秘钥</a> ")
+document.write( "<a href=\"javascript:admi=prompt(`设置管理员识别码`,`" + admi +"`); fh()\">修改管理员识别码</a> ")
+document.write( "<a href=\"javascript:tokn=prompt(`设置token`,`" + tokn +"`); fh()\">修改token</a>")
+}
+function fh () {
+document.open()
+document.write( "<a href=\"javascript:WebSocketTest()\">运行</a> <a href=\"javascript:gl()\">管理机器人</a>")
+}
+function WebSocketTest () {
+if ( "WebSocket" in window ) {
+document.open()
+
+var load = true
+document.write( "<a href=\"javascript:location.reload()\">重置</a></br>" );
+document.write( "正在连接到服务器…<br>" );
+
+
+  var take = function (arr, take) {
+        var tmp_arr = [];
+        var len = take > arr.length ? arr.length : take;
+        for (var i = 0; i < len; i++) {
+            tmp_arr.push(arr[i]);
+        }
+        return tmp_arr;
+    };
+    var skip = function (arr, index) {
+        var tmp_arr = [];
+        for (var i = index; i < arr.length; i++) {
+            tmp_arr.push(arr[i]);
+        }
+        return tmp_arr;
+    };
+
+             // 打开一个 web socket
+             var ws = new WebSocket(wsws);
+
+             ws.onopen = function () {
+                 // Web Socket 已连接上，使用 send() 方法发送数据
+		document.open()
+		document.write( "<a href=\"javascript:location.reload()\">重置</a></br>" );
+                 document.write( "登入中…<br><br>" );
+                 ws.send( `{"cmd":"join", "channel":"` + chan +`", "nick":"` + nick +`", "token":"` + tokn + `", "password":"` + pass + `","murmur":"` + murm + `","client_key":"` + clke + `"}` )
+             };
+
+             ws.onmessage = function ( evt ) {
+                 var received_msg = evt.data;
+                 document.write( received_msg + "<br>");
+		if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).text=="awa") ws.send(`{"cmd":"chat","text":"uwu"}`)
+		if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).trip==admi && JSON.parse(received_msg).text=="stop") ws.send(``)
+
+                if (load) {
+			document.open()
+			document.write( "<a href=\"javascript:location.reload()\">重置</a></br>" );
+			const textc = [`我来了`,`我来了awa`,`我来XC摸鱼了`,`我来XC玩了`,`我来摸鱼了`,`我来摸fish了`,`我来XC吃鱼了`,`:D`]
+			ws.send(`{"cmd":"chat","text":"` + textc[Math.floor(Math.random() * (textc.length - 1 - 1 + 0)) + 0] + `"}`)
+			load = false
+		};
+		if (JSON.parse(received_msg).cmd=="warn") ws.send(`{"cmd":"chat","text":"出错了，详细信息：` + JSON.parse(received_msg).text + `"}`)
+		if (JSON.parse(received_msg).cmd=="info" && JSON.parse(received_msg).type=="whisper") ws.send(`{"cmd":"chat","text":"` + JSON.parse(received_msg).text.replace("你","我") + `"}`)
+const texta = [`hi`,`你好`,`您好`,`hello`,`欢迎`,`welcome`,`awa`,`(\\*´▽｀)ノノ`]
+if (JSON.parse(received_msg).cmd=="onlineAdd") ws.send(`{"cmd":"chat","text":"@` + JSON.parse(received_msg).nick + ` ` + texta[Math.floor(Math.random() * (texta.length - 1 - 1 + 0)) + 0] +`"}`)
+const textb = [`欢迎回来`,`欢迎回归`,`欢迎回来XC`,`欢迎回归XC`,`热烈欢迎回归`,`热烈欢迎回归XC`,`热烈欢迎回来XC`,`热烈欢迎回来`]
+if (JSON.parse(received_msg).cmd=="chat" && JSON.parse(received_msg).server && JSON.parse(received_msg).text!=JSON.parse(received_msg).text.replace("欢迎回来","")) ws.send(`{"cmd":"chat","text":"` + JSON.parse(received_msg).text.replace("欢迎回来！",textb[Math.floor(Math.random() * (textb.length - 1 - 1 + 0)) + 0]) +`"}`)
+// if (JSON.parse(received_msg).cmd=="onlineRemove") ws.send(`{"cmd":"chat","text":"@` + JSON.parse(received_msg).nick + ` 下次记得来摸鱼awa！"}`)
+
+             };
+
+             ws.onclose = function () {
+                 // 关闭 websocket
+                 document.write( "连接已关闭……<br><a href=\"javascript:WebSocketTest()\">重新运行</a>" );
+             };
+
+         } else {
+             // 浏览器不支持 WebSocket
+             document.write( "您的浏览器不支持 WebSocket!" );
+         }
+     }
+        </script>
+   </head>
+   <body>
+   
+      <div id="sse">
+         <a href="javascript:WebSocketTest()">运行</a> <a href="javascript:gl()">管理机器人</a>
+      </div>
+      
+   </body>
+</html>
